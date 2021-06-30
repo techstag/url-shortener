@@ -2,16 +2,29 @@
   "name": "url-shortener",
   "version": "1.0.0",
   "description": "",
-  "main": "bin/www",
+  "main": "app.ts",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "env-cmd -f ./config/dev.env nodemon app.ts"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "env-cmd": "^10.1.0",
     "express": "~4.16.1",
+    "mongoose": "^5.12.15",
     "morgan": "~1.9.1"
   },
   "author": "Konrad Dobosz <kdobosz02@gmail.com> (https://kdobosz.pl/)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.12",
+    "@types/mongoose": "^5.11.97",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^15.12.4",
+    "jest": "^27.0.5",
+    "nodemon": "^2.0.7",
+    "prettier": "2.3.1",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
+  }
 }
