@@ -1,8 +1,9 @@
 import mongoose from 'mongoose'
 
 export default async (): Promise<void> => {
+    console.log(typeof process.env.MONGODB_URL)
     try {
-        await mongoose.connect('mongodb://localhost:27017/url-shortener', {
+        await mongoose.connect(process.env.MONGODB_URL ?? '', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true,
