@@ -14,6 +14,5 @@ document.querySelector('form').addEventListener('submit', async (e) => {
         .then(async res => JSON.parse(await res.text()))
         .catch(e => console.error(e))
 
-
-    document.write(`${window.location.href}r/${request.redirectName}`)
+    document.querySelector('#result').innerHTML = `Your shortened link: <br>${window.location.href}r/${request.redirectName}`
 })
