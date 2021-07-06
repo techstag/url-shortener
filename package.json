@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node dist/app.js",
     "postinstall": "tsc",
     "dev": "env-cmd -f ./config/dev.env nodemon app.ts"
   },
