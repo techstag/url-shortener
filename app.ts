@@ -11,8 +11,6 @@ const app = express()
 
 const db = mongo()
 
-const PORT = process.env.PORT || 3000
-
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -22,6 +20,4 @@ app.use('/', indexRouter)
 app.use('/r', redirectRouter)
 app.use('/new', newRedirectRouter)
 
-app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`)
-})
+export { app as default }
