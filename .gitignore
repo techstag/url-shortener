@@ -69,3 +69,6 @@ yarn-error.log
 
 # IntelliJ IDEA
 .idea/
+
+# Webpack output
+dist/
