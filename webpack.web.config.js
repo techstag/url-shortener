@@ -7,6 +7,7 @@ module.exports = {
   entry: path.join(__dirname, 'src', 'index.ts'),
   target: 'web',
   mode: 'development',
+  watch: process.env.NODE_ENV === 'development',
   devtool: 'source-map',
   output: {
     path: path.join(__dirname, 'dist', 'public'),
@@ -59,7 +60,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contentHash].css',
+      filename: '[name].css',
       chunkFilename: '[id].css'
     }),
     new HtmlWebpackPlugin({

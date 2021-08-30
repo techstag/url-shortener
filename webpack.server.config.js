@@ -1,10 +1,27 @@
 const path = require('path')
 const webpackNodeExternals = require('webpack-node-externals')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const WebpackShellPluginNext = require('webpack-shell-plugin-next')
+
+let webpackPlugins = [
+  new ForkTsCheckerWebpackPlugin()
+]
+
+if (process.env.NODE_ENV !== 'production') {
+  webpackPlugins.push(new WebpackShellPluginNext({
+    onBuildExit: {
+      scripts: ['npm run start-dev'],
+      blocking: false,
+      parallel: true
+    }
+  }))
+}
+
 module.exports = {
   entry: path.join(__dirname, 'index.ts'),
   target: 'node',
   mode: 'development',
+  watch: process.env.NODE_ENV === 'development',
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '',
@@ -29,7 +46,5 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
   },
-  plugins: [
-    new ForkTsCheckerWebpackPlugin(),
-  ],
+  plugins: webpackPlugins,
 }
